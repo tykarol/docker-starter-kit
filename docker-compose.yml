@@ -1,0 +1,24 @@
+version: '2'
+
+services:
+    db:
+        image: mysql:5.7
+        volumes:
+            - db:/var/lib/mysql
+        restart: always
+        environment:
+            MYSQL_ROOT_PASSWORD: pass
+            MYSQL_DATABASE: database
+            MYSQL_USER: user
+            MYSQL_PASSWORD: pass
+    application:
+        hostname: app
+        build: docker
+        working_dir: /var/www/app
+        volumes:
+            - ./app:/var/www/app
+        ports:
+            - ${APP_IP}:80:80
+            - ${APP_IP}:443:443
+volumes:
+    db:
