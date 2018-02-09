@@ -19,5 +19,5 @@ You can also change the files in `docker` folder.
 ## Run
 
 - run containers: `docker-compose up`
-- open [127.10.0.1](http://127.10.0.1/) in your browser
+- open [127.10.0.1](https://127.10.0.1/) in your browser
 - enter to the `application` container: `docker-compose exec application bash`
