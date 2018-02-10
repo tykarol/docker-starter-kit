@@ -17,10 +17,12 @@ RUN apt-get install -y \
 
 RUN rm -rf /etc/apache2/sites-enabled/* /etc/apache2/sites-available/*
 COPY cert/* /etc/apache2/ssl/
-COPY vhost.conf /etc/apache2/sites-enabled/
+
 COPY vhost.conf /etc/apache2/sites-available/
-COPY php.ini /etc/php5/apache2/conf.d/99-overrides.ini
-COPY php-cli.ini /etc/php5/cli/conf.d/99-overrides.ini
+RUN ln -s /etc/apache2/sites-available/vhost.conf /etc/apache2/sites-enabled/
+
+COPY php.ini /etc/php5/apache2/conf.d/999-overrides.ini
+COPY php-cli.ini /etc/php5/cli/conf.d/999-overrides.ini
 
 RUN a2enmod rewrite ssl
 

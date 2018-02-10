@@ -1,6 +1,6 @@
 # Docker
 
-Apache2, PHP5, MySQL, NodeJS, Supervisor
+Apache2, PHP5, MySQL, Adminer, NodeJS, Supervisor
 
 ## Commands
 
@@ -16,8 +16,11 @@ You can change the IP addres in `.env` file.
 
 You can also change the files in `docker` folder.
 
+The application files are in the `app` folder.
+
 ## Run
 
 - run containers: `docker-compose up`
-- open [127.10.0.1](https://127.10.0.1/) in your browser
+- open app: [127.10.0.1](https://127.10.0.1/)
+- open adminer: [127.10.0.1:8080](https://127.10.0.1:8080/)
 - enter to the `application` container: `docker-compose exec application bash`
