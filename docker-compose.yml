@@ -2,29 +2,41 @@ version: '2'
 
 services:
     adminer:
-        image: adminer:4.6
         restart: always
+        image: adminer:4.6
+        env_file:
+            - .env.default
+            - .env
         ports:
             - ${APP_IP}:8080:8080
+
     db:
-        image: mysql:5.7
         restart: always
+        image: mysql:5.7
+        env_file:
+            - .env.default
+            - .env
         environment:
-            MYSQL_ROOT_PASSWORD: pass
+            MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
             MYSQL_DATABASE: app
             MYSQL_USER: user
-            MYSQL_PASSWORD: pass
+            MYSQL_PASSWORD: ${DB_PASSWORD}
         command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci --init-connect='SET NAMES UTF8;'
         volumes:
             - db:/var/lib/mysql
+
     application:
         hostname: app
         build: docker
         working_dir: /var/www/app
+        env_file:
+            - .env.default
+            - .env
         volumes:
             - ./app:/var/www/app
         ports:
             - ${APP_IP}:80:80
             - ${APP_IP}:443:443
+
 volumes:
-    db:
+    db: {}
