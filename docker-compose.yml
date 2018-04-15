@@ -4,18 +4,12 @@ services:
     adminer:
         restart: always
         image: adminer:4.6
-        env_file:
-            - .env.default
-            - .env
         ports:
             - ${APP_IP}:8080:8080
 
     db:
         restart: always
         image: mysql:5.7
-        env_file:
-            - .env.default
-            - .env
         environment:
             MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
             MYSQL_DATABASE: app
@@ -29,9 +23,6 @@ services:
         hostname: app
         build: docker
         working_dir: /var/www/app
-        env_file:
-            - .env.default
-            - .env
         volumes:
             - ./app:/var/www/app
         ports:

@@ -16,7 +16,7 @@ Apache2, PHP5, MySQL, Adminer, NodeJS, Supervisor
 
 ## Configuration
 
-You can create the `.env` file to overwrite values from `.env.default`.
+You need to create the `.env` file based on the `.env-example` file.
 
 You can also change the files in `docker` folder.
 
@@ -27,7 +27,7 @@ The application files are in the `app` folder.
 Before first run you should:
 
 - generate the new self-signed certificate
-- override values from `.env.default` to `.env`
+- create a copy of the `.env-example` file as `.env` by changing the values
 - also you can change configuration in the `docker/*.ini` and `docker/*.conf` files
 
 ## Run
